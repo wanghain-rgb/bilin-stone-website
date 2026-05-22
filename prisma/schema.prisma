@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Product {
+  id             Int       @id @default(autoincrement())
+  name           String
+  nameZh         String?
+  description    String?
+  descriptionZh  String?
+  category       String?
+  images         String?   // JSON array of image URLs
+  specs          String?   // JSON object of specifications (EN)
+  specsZh        String?   // JSON object of specifications (ZH)
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  inquiryItems   InquiryItem[]
+}
+
+model Inquiry {
+  id          Int       @id @default(autoincrement())
+  name        String    // 联系人姓名
+  phone       String    // 手机号
+  email       String?   // 邮箱（可选）
+  company     String?   // 公司名称（可选）
+  message     String?   // 备注信息
+  status      String    @default("pending") // pending | contacted | closed
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  items       InquiryItem[]
+}
+
+model InquiryItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int     @default(1)
+  note      String?
+  inquiry   Inquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  inquiryId Int
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String   // bcrypt hashed
+  createdAt DateTime @default(now())
+}

@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import InquiryForm from "./InquiryForm";
 
-export const metadata = { title: "Inquiry — BillinStone" };
+export const metadata = { title: "Inquiry — Bilin Stone" };
 
 export default async function InquiryPage({
   searchParams,

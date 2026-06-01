@@ -18,7 +18,7 @@ export default function Footer() {
             <p className="text-sm text-gray-500 mt-2">{t.footer.tagline}</p>
           </div>
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} BillinStone. {t.footer.rights}
+            © {new Date().getFullYear()} Bilin Stone. {t.footer.rights}
           </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import InquiryTable from "./InquiryTable";
 
-export const metadata = { title: "询价记录 - BillinStone 管理后台" };
+export const metadata = { title: "询价记录 - Bilin Stone 管理后台" };
 
 export default async function InquiriesPage() {
   const inquiries = await prisma.inquiry.findMany({

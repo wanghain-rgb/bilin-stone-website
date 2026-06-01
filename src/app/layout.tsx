@@ -9,8 +9,8 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "BillinStone",
-  description: "高品质建材产品 - BillinStone",
+  title: "Bilin Stone",
+  description: "高品质建材产品 - Bilin Stone",
 };
 
 export default function RootLayout({

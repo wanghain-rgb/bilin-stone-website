@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import ProductGrid from "./ProductGrid";
 
-export const metadata = { title: "Products — BillinStone" };
+export const metadata = { title: "Products — Bilin Stone" };
 
 export default async function ProductsPage({
   searchParams,

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -18,8 +19,7 @@ import {
   Mail,
 } from "lucide-react";
 import { useLang } from "@/components/LangProvider";
-
-const CERTIFICATIONS = ["CE", "CB", "GS", "UL", "FCC", "RoHS", "REACH"];
+import { CERTIFICATIONS } from "@/lib/constants";
 
 const content = {
   en: {
@@ -28,7 +28,7 @@ const content = {
     heroSub: "From factory to end market — delivering innovation, quality, and sustainability worldwide.",
     intro: {
       title: "Company Introduction",
-      body: "Bilin Stone is a global supply chain and manufacturing partner specializing in cooling and heating solutions. Since 2016, we have been committed to delivering high-performance products through the integration of R&D, manufacturing, and global logistics. With production bases in China and Thailand, and sales and service centers in Australia and the United States, we provide localized support backed by strong global capabilities. We go beyond manufacturing — delivering end-to-end solutions that empower brands to grow efficiently and sustainably worldwide.",
+      body: "Bilin Stone is a global supply chain and manufacturing partner specializing in cooling and heating solutions. Since 2016, we have been committed to delivering high-performance products through the integration of R&D, manufacturing, and global logistics. With a production base in China, and sales and service centers in Australia and the United States, we provide localized support backed by strong global capabilities. We go beyond manufacturing — delivering end-to-end solutions that empower brands to grow efficiently and sustainably worldwide.",
     },
     whatWeDo: {
       title: "What We Do",
@@ -51,7 +51,7 @@ const content = {
     network: {
       title: "Our Global Network",
       body: "With established sales and service centers in Australia and the United States, we provide localized support with global efficiency. From factory to end market, every step is optimized for speed, consistency, and quality.",
-      locations: ["China — Production Base", "Thailand — Production Base", "Australia — Sales & Service", "United States — Sales & Service"],
+      locations: ["China — Production Base", "Australia — Sales & Service", "United States — Sales & Service"],
     },
     csr: {
       title: "Social Responsibility",
@@ -93,7 +93,7 @@ const content = {
     heroSub: "从工厂到终端市场 — 在全球范围内交付创新、品质与可持续发展。",
     intro: {
       title: "公司介绍",
-      body: "Bilin Stone 是专注于制冷与取暖解决方案的全球供应链与制造合作伙伴。自2016年起，我们通过整合研发、制造与全球物流，致力于提供高性能产品。我们在中国和泰国设有生产基地，在澳大利亚和美国设有销售与服务中心，以强大的全球能力为客户提供本地化支持。我们不止于制造——我们提供端到端的整体解决方案，助力品牌在全球高效、可持续地成长。",
+      body: "Bilin Stone 是专注于制冷与取暖解决方案的全球供应链与制造合作伙伴。自2016年起，我们通过整合研发、制造与全球物流，致力于提供高性能产品。我们在中国设有生产基地，在澳大利亚和美国设有销售与服务中心，以强大的全球能力为客户提供本地化支持。我们不止于制造——我们提供端到端的整体解决方案，助力品牌在全球高效、可持续地成长。",
     },
     whatWeDo: {
       title: "我们的业务",
@@ -116,7 +116,7 @@ const content = {
     network: {
       title: "全球网络",
       body: "我们在澳大利亚和美国设有销售与服务中心，以全球效率提供本地化支持。从工厂到终端市场，每个环节均针对速度、一致性和品质进行优化。",
-      locations: ["中国 — 生产基地", "泰国 — 生产基地", "澳大利亚 — 销售与服务", "美国 — 销售与服务"],
+      locations: ["中国 — 生产基地", "澳大利亚 — 销售与服务", "美国 — 销售与服务"],
     },
     csr: {
       title: "社会责任",
@@ -176,29 +176,14 @@ export default function AboutContent() {
       {/* Company Introduction */}
       <section className="py-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-            <div className="lg:col-span-3">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">{c.intro.title}</h2>
-              <p className="text-gray-600 leading-8 text-base">{c.intro.body}</p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-gray-500">
-                <Mail className="h-4 w-4 shrink-0 text-amber-500" />
-                <a href="mailto:infw@bilinstone.com" className="hover:text-amber-600 transition-colors">
-                  infw@bilinstone.com
-                </a>
-              </div>
-            </div>
-            <div className="lg:col-span-2 grid grid-cols-2 gap-4">
-              {[
-                { num: "2016", label: lang === "zh" ? "成立年份" : "Founded" },
-                { num: "42", label: lang === "zh" ? "条生产线" : "Production Lines" },
-                { num: "50K+", label: lang === "zh" ? "日产能（台）" : "Units / Day" },
-                { num: "4", label: lang === "zh" ? "全球运营中心" : "Global Offices" },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-xl border border-gray-100 bg-gray-50 p-6 text-center">
-                  <div className="text-3xl font-bold text-amber-500">{stat.num}</div>
-                  <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-                </div>
-              ))}
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">{c.intro.title}</h2>
+            <p className="text-gray-600 leading-8 text-base max-w-3xl">{c.intro.body}</p>
+            <div className="mt-6 flex items-center gap-2 text-sm text-gray-500">
+              <Mail className="h-4 w-4 shrink-0 text-amber-500" />
+              <a href="mailto:infw@bilinstone.com" className="hover:text-amber-600 transition-colors">
+                infw@bilinstone.com
+              </a>
             </div>
           </div>
         </div>
@@ -313,11 +298,28 @@ export default function AboutContent() {
       <section className="py-12 bg-gray-50 border-t border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-lg font-semibold text-gray-700 mb-6">{c.certs.title}</h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center" style={{ gap: "10px" }}>
             {CERTIFICATIONS.map((cert) => (
-              <Badge key={cert} variant="secondary" className="px-4 py-1.5 text-sm font-semibold">
-                {cert}
-              </Badge>
+              <div
+                key={cert.name}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "8px 12px",
+                  borderRadius: "8px",
+                  background: "#ffffff",
+                  border: "1px solid #e5e7eb",
+                }}
+              >
+                <Image
+                  src={cert.logo}
+                  alt={cert.name}
+                  width={56}
+                  height={48}
+                  style={{ height: "48px", width: "auto", objectFit: "contain" }}
+                />
+              </div>
             ))}
           </div>
         </div>

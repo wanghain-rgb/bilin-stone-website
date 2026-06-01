@@ -9,7 +9,7 @@ import { useLang } from "@/components/LangProvider";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { lang, t, setLang } = useLang();
+  const { t } = useLang();
 
   const navLinks = [
     { href: "/", label: t.nav.home },
@@ -42,28 +42,13 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* Language toggle */}
-            <button
-              onClick={() => setLang(lang === "en" ? "zh" : "en")}
-              className="flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-gray-900 border border-gray-200 rounded-md px-2.5 py-1 transition-colors"
-              title="Switch language"
-            >
-              {lang === "en" ? "中文" : "EN"}
-            </button>
-
             <Link href="/inquiry" className={buttonVariants({ size: "sm" })}>
               {t.nav.cta}
             </Link>
           </nav>
 
-          {/* Mobile: lang toggle + sheet */}
+          {/* Mobile: hamburger */}
           <div className="flex items-center gap-2 md:hidden">
-            <button
-              onClick={() => setLang(lang === "en" ? "zh" : "en")}
-              className="text-xs font-medium text-gray-500 border border-gray-200 rounded px-2 py-1"
-            >
-              {lang === "en" ? "中文" : "EN"}
-            </button>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger render={<Button variant="ghost" size="icon" />}>
                 <Menu className="h-5 w-5" />

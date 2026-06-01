@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ChevronLeft, ChevronRight, ShieldCheck, Award, Zap, Settings2 } from "lucide-react";
 import { useLang } from "@/components/LangProvider";
 
-const HERO_IMAGES = ["/images/hero-1.png", "/images/hero-2.png"];
+const HERO_IMAGES = ["/images/hero-1.png", "/images/hero-2.png", "/images/hero-3.png"];
 const INTERVAL_MS = 5000;
 
 type Product = {
@@ -24,7 +24,7 @@ type Product = {
 const featureIcons = [ShieldCheck, Award, Zap, Settings2];
 
 export default function HomeContent({ products }: { products: Product[] }) {
-  const { lang, t } = useLang();
+  const { t } = useLang();
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -173,7 +173,7 @@ export default function HomeContent({ products }: { products: Product[] }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-3">
-                {lang === "zh" ? "关于我们" : "About Us"}
+                About Us
               </p>
               <h2 className="text-3xl font-bold mb-6">{t.home.aboutTitle}</h2>
               <p className="text-gray-300 leading-8 text-lg">{t.home.aboutSub}</p>
@@ -189,10 +189,10 @@ export default function HomeContent({ products }: { products: Product[] }) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { num: "2016", label: lang === "zh" ? "成立年份" : "Founded" },
-                { num: "42", label: lang === "zh" ? "条生产线" : "Production Lines" },
-                { num: "50K+", label: lang === "zh" ? "日产能（台）" : "Units / Day" },
-                { num: "4", label: lang === "zh" ? "全球运营中心" : "Global Offices" },
+                { num: "2016", label: "Founded" },
+                { num: "42", label: "Production Lines" },
+                { num: "50K+", label: "Units / Day" },
+                { num: "4", label: "Global Offices" },
               ].map((stat) => (
                 <div key={stat.label} className="rounded-xl bg-white/5 border border-white/10 p-6 text-center">
                   <div className="text-3xl font-bold text-amber-400">{stat.num}</div>
@@ -222,8 +222,8 @@ export default function HomeContent({ products }: { products: Product[] }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.slice(0, 6).map((product) => {
                 const images = product.images ? JSON.parse(product.images) as string[] : [];
-                const displayName = lang === "zh" && product.nameZh ? product.nameZh : product.name;
-                const displayDesc = lang === "zh" && product.descriptionZh ? product.descriptionZh : product.description;
+                const displayName = product.name;
+                const displayDesc = product.description;
                 return (
                   <Card
                     key={product.id}

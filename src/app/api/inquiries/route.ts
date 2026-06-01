@@ -3,8 +3,6 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 type InquiryItem = {
   product: { name: string; category?: string | null };
   quantity: number;
@@ -133,9 +131,14 @@ async function sendInquiryNotification(inquiry: {
   createdAt: Date;
   items: InquiryItem[];
 }) {
+  const apiKey = process.env.RESEND_API_KEY;
   const adminEmail = process.env.ADMIN_EMAIL;
-  if (!adminEmail || !process.env.RESEND_API_KEY) return;
+  if (!apiKey || !adminEmail) {
+    console.warn("[Resend] Skipping email: RESEND_API_KEY or ADMIN_EMAIL not configured.");
+    return;
+  }
 
+  const resend = new Resend(apiKey);
   await resend.emails.send({
     from: "Bilin Stone <onboarding@resend.dev>",
     to: adminEmail,

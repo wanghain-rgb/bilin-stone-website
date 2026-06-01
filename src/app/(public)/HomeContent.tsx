@@ -4,26 +4,72 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
 import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ChevronLeft, ChevronRight, ShieldCheck, Award, Zap, Settings2 } from "lucide-react";
 import { useLang } from "@/components/LangProvider";
 
 const HERO_IMAGES = ["/images/hero-1.png", "/images/hero-2.png", "/images/hero-3.png"];
 const INTERVAL_MS = 5000;
 
-type Product = {
-  id: number;
-  name: string;
-  nameZh: string | null;
-  description: string | null;
-  descriptionZh: string | null;
-  category: string | null;
-  images: string | null;
-};
+// dbKey maps to the category value stored in the database for product counting
+const CATEGORIES = [
+  {
+    name: "Air Circulation Fan",
+    slug: "Air Circulation Fan",
+    dbKey: "Air Circulator",
+    desc: "Energy-efficient airflow for modern living",
+    image: "/products/air-circulator/FX-L35R/main.png",
+  },
+  {
+    name: "Traditional Fan",
+    slug: "Traditional Fan",
+    dbKey: "Traditional Fan",
+    desc: "Classic cooling for everyday comfort",
+    image: "/products/air-circulator/FX-L33R/main.png",
+  },
+  {
+    name: "Tower Fan",
+    slug: "Tower Fan",
+    dbKey: "Tower Fan",
+    desc: "Slim design, powerful airflow",
+    image: "/products/air-circulator/FX-L55R/main.png",
+  },
+  {
+    name: "Evaporative Air Cooler",
+    slug: "Evaporative Air Cooler",
+    dbKey: "Cool Fan",
+    desc: "Natural cooling with water evaporation",
+    image: "/products/cool-fan/CF-01R/main.png",
+  },
+  {
+    name: "Carbon Fiber Heater",
+    slug: "Carbon Fiber Heater",
+    dbKey: "Carbon Fiber Heater",
+    desc: "Fast heating with infrared technology",
+    image: "/products/heater/QN2601R/main.png",
+  },
+  {
+    name: "Electrothermal Film Heater",
+    slug: "Electrothermal Film Heater",
+    dbKey: "Electrothermal Film Heater",
+    desc: "Ultra-thin, wall-mounted warmth",
+    image: "/products/heater/QN236R/main.png",
+  },
+  {
+    name: "PTC Ceramic Heater",
+    slug: "PTC Ceramic Heater",
+    dbKey: "Heater",
+    desc: "Safe, efficient ceramic heating",
+    image: "/products/heater/QN816R/main.png",
+  },
+];
 
 const featureIcons = [ShieldCheck, Award, Zap, Settings2];
 
-export default function HomeContent({ products }: { products: Product[] }) {
+export default function HomeContent({
+  categoryCountMap,
+}: {
+  categoryCountMap: Record<string, number>;
+}) {
   const { t } = useLang();
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -50,7 +96,6 @@ export default function HomeContent({ products }: { products: Product[] }) {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        {/* Slides */}
         {HERO_IMAGES.map((src, i) => (
           <div
             key={src}
@@ -67,10 +112,8 @@ export default function HomeContent({ products }: { products: Product[] }) {
           </div>
         ))}
 
-        {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50" />
 
-        {/* Content */}
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-36">
           <div className="max-w-3xl">
             <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">
@@ -111,7 +154,6 @@ export default function HomeContent({ products }: { products: Product[] }) {
           </div>
         </div>
 
-        {/* Prev / Next arrows */}
         <button
           onClick={prev}
           className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white hover:bg-black/55 transition-colors"
@@ -127,7 +169,6 @@ export default function HomeContent({ products }: { products: Product[] }) {
           <ChevronRight className="h-5 w-5" />
         </button>
 
-        {/* Dot indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
           {HERO_IMAGES.map((_, i) => (
             <button
@@ -156,11 +197,92 @@ export default function HomeContent({ products }: { products: Product[] }) {
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50">
                     <Icon className="h-6 w-6 text-amber-600" />
                   </div>
-                  <h3 className="text-base font-semibold text-gray-900">
-                    {f.title}
-                  </h3>
+                  <h3 className="text-base font-semibold text-gray-900">{f.title}</h3>
                   <p className="mt-2 text-sm text-gray-500">{f.desc}</p>
                 </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Categories */}
+      <section className="py-16 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">Product Categories</h2>
+              <p className="text-gray-500 text-sm mt-1">Explore our full range of climate solutions</p>
+            </div>
+            <Link
+              href="/products"
+              className="flex items-center gap-1 text-sm text-amber-600 hover:text-amber-700 font-medium"
+            >
+              View All <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CATEGORIES.map((cat) => {
+              const count = categoryCountMap[cat.dbKey] ?? 0;
+              return (
+                <Link
+                  key={cat.slug}
+                  href={`/products?category=${encodeURIComponent(cat.slug)}`}
+                  className="group block"
+                >
+                  <div
+                    className="bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                    style={{
+                      border: "1px solid #e5e7eb",
+                      boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    {/* Image area */}
+                    <div
+                      className="relative overflow-hidden bg-gray-50"
+                      style={{ height: "200px" }}
+                    >
+                      <Image
+                        src={cat.image}
+                        alt={cat.name}
+                        fill
+                        className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span
+                          className="text-white text-sm font-semibold rounded-lg"
+                          style={{ border: "1px solid white", padding: "8px 20px" }}
+                        >
+                          View Products
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Info */}
+                    <div style={{ padding: "16px 20px" }}>
+                      <h3
+                        className="font-semibold text-gray-900"
+                        style={{ fontSize: "14px" }}
+                      >
+                        {cat.name}
+                      </h3>
+                      <p
+                        className="text-gray-500 mt-1"
+                        style={{ fontSize: "12px", lineHeight: "1.5" }}
+                      >
+                        {cat.desc}
+                      </p>
+                      <p
+                        className="font-medium mt-3"
+                        style={{ fontSize: "12px", color: "#C9922A" }}
+                      >
+                        {count} {count === 1 ? "Product" : "Products"}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
               );
             })}
           </div>
@@ -204,79 +326,6 @@ export default function HomeContent({ products }: { products: Product[] }) {
         </div>
       </section>
 
-      {/* Featured Products */}
-      {products.length > 0 && (
-        <section className="py-16 bg-gray-50">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-gray-900">
-                {t.home.featuredProducts}
-              </h2>
-              <Link
-                href="/products"
-                className="flex items-center gap-1 text-sm text-amber-600 hover:text-amber-700 font-medium"
-              >
-                {t.home.viewAll} <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.slice(0, 6).map((product) => {
-                const images = product.images ? JSON.parse(product.images) as string[] : [];
-                const displayName = product.name;
-                const displayDesc = product.description;
-                return (
-                  <Card
-                    key={product.id}
-                    className="overflow-hidden hover:shadow-md transition-shadow"
-                  >
-                    <div className="bg-gray-100 h-48 relative flex items-center justify-center">
-                      {images[0] ? (
-                        <Image
-                          src={images[0]}
-                          alt={displayName}
-                          fill
-                          className="object-contain p-4"
-                        />
-                      ) : (
-                        <span className="text-gray-400 text-sm">
-                          No image
-                        </span>
-                      )}
-                    </div>
-                    <CardContent className="p-4">
-                      <h3 className="font-semibold text-gray-900">
-                        {displayName}
-                      </h3>
-                      {product.category && (
-                        <p className="text-xs text-gray-500 mt-1">
-                          {product.category}
-                        </p>
-                      )}
-                      {displayDesc && (
-                        <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-                          {displayDesc}
-                        </p>
-                      )}
-                      <div className="mt-4">
-                        <Link
-                          href={`/products/${product.id}`}
-                          className={buttonVariants({
-                            variant: "outline",
-                            size: "sm",
-                          })}
-                        >
-                          {t.products.viewDetail}
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* CTA */}
       <section className="py-16 bg-amber-500">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
@@ -286,8 +335,7 @@ export default function HomeContent({ products }: { products: Product[] }) {
             href="/inquiry"
             className={buttonVariants({
               size: "lg",
-              className:
-                "mt-6 bg-black text-white hover:bg-gray-800 inline-flex items-center gap-2",
+              className: "mt-6 bg-black text-white hover:bg-gray-800 inline-flex items-center gap-2",
             })}
           >
             {t.home.ctaBtn} <ArrowRight className="h-4 w-4" />

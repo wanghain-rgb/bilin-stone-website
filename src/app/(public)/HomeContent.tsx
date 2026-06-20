@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, useCallback, useRef } from "react";
-import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown, Wrench, BadgeCheck, Globe, Layers } from "lucide-react";
 import { useLang } from "@/components/LangProvider";
 import { CERTIFICATIONS } from "@/lib/constants";
@@ -677,8 +676,8 @@ export default function HomeContent({
             style={{ gap: "48px", marginBottom: "48px" }}
           >
             {[
-              { name: "Leonara Shen", email: "leonara.shen@bilinstone.com" },
-              { name: "Tony Luo",     email: "Tony.luo@bilinstone.com" },
+              { name: "Leonara Shen", email: "leonara.shen@jianhuihome.com" },
+              { name: "Tony Luo",     email: "Tony.luo@jianhuihome.com" },
             ].map(({ name, email }) => (
               <div key={name}>
                 <p

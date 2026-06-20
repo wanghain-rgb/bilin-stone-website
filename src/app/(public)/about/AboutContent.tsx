@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   Wind,
@@ -84,7 +83,7 @@ const content = {
       title: "Ready to partner with us?",
       sub: "Contact our team and let's build something great together.",
       btn: "Get in Touch",
-      email: "infw@bilinstone.com",
+      email: "infw@jianhuihome.com",
     },
   },
   zh: {
@@ -149,7 +148,7 @@ const content = {
       title: "准备好与我们合作了吗？",
       sub: "联系我们的团队，共同创造卓越。",
       btn: "立即联系",
-      email: "infw@bilinstone.com",
+      email: "infw@jianhuihome.com",
     },
   },
 };
@@ -181,8 +180,8 @@ export default function AboutContent() {
             <p className="text-gray-600 leading-8 text-base max-w-3xl">{c.intro.body}</p>
             <div className="mt-6 flex items-center gap-2 text-sm text-gray-500">
               <Mail className="h-4 w-4 shrink-0 text-amber-500" />
-              <a href="mailto:infw@bilinstone.com" className="hover:text-amber-600 transition-colors">
-                infw@bilinstone.com
+              <a href="mailto:infw@jianhuihome.com" className="hover:text-amber-600 transition-colors">
+                infw@jianhuihome.com
               </a>
             </div>
           </div>
@@ -216,7 +215,7 @@ export default function AboutContent() {
       <section className="py-16 bg-white">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{c.vision.title}</h2>
-          <p className="text-lg text-gray-700 leading-8 italic mb-8">"{c.vision.lead}"</p>
+          <p className="text-lg text-gray-700 leading-8 italic mb-8">&ldquo;{c.vision.lead}&rdquo;</p>
           <ul className="space-y-3">
             {c.vision.points.map((p) => (
               <li key={p} className="flex items-center justify-center gap-3 text-gray-600">

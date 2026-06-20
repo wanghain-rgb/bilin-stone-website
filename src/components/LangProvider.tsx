@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 import { type Lang, translations, type Translations } from "@/lib/i18n";
 
 type LangContextType = {
@@ -15,17 +15,31 @@ const LangContext = createContext<LangContextType>({
   setLang: () => {},
 });
 
-export function LangProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+const LANG_STORAGE_KEY = "lang";
+const LANG_CHANGE_EVENT = "bilin-stone-lang-change";
 
-  useEffect(() => {
-    const stored = localStorage.getItem("lang") as Lang | null;
-    if (stored === "zh" || stored === "en") setLangState(stored);
-  }, []);
+function readStoredLang(): Lang {
+  if (typeof window === "undefined") return "en";
+  const stored = window.localStorage.getItem(LANG_STORAGE_KEY);
+  return stored === "zh" || stored === "en" ? stored : "en";
+}
+
+function subscribeToLangChanges(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(LANG_CHANGE_EVENT, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(LANG_CHANGE_EVENT, onStoreChange);
+  };
+}
+
+export function LangProvider({ children }: { children: React.ReactNode }) {
+  const lang = useSyncExternalStore<Lang>(subscribeToLangChanges, readStoredLang, () => "en");
 
   const setLang = (l: Lang) => {
-    localStorage.setItem("lang", l);
-    setLangState(l);
+    window.localStorage.setItem(LANG_STORAGE_KEY, l);
+    window.dispatchEvent(new Event(LANG_CHANGE_EVENT));
   };
 
   return (

@@ -9,6 +9,15 @@ type InquiryItem = {
   note?: string | null;
 };
 
+function escapeHtml(value: string | number | null | undefined): string {
+  return String(value ?? "-")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function buildEmailHtml(inquiry: {
   name: string;
   phone: string;
@@ -22,10 +31,10 @@ function buildEmailHtml(inquiry: {
     .map(
       (item) => `
       <tr>
-        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${item.product.name}</td>
-        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${item.product.category ?? "-"}</td>
-        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;text-align:center;">${item.quantity}</td>
-        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${item.note ?? "-"}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${escapeHtml(item.product.name)}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${escapeHtml(item.product.category)}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;text-align:center;">${escapeHtml(item.quantity)}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${escapeHtml(item.note)}</td>
       </tr>`
     )
     .join("");
@@ -56,19 +65,19 @@ function buildEmailHtml(inquiry: {
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="padding:6px 0;color:#6b7a99;font-size:13px;width:100px;">Name</td>
-                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;font-weight:500;">${inquiry.name}</td>
+                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;font-weight:500;">${escapeHtml(inquiry.name)}</td>
               </tr>
               <tr>
                 <td style="padding:6px 0;color:#6b7a99;font-size:13px;">Company</td>
-                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;">${inquiry.company ?? "-"}</td>
+                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;">${escapeHtml(inquiry.company)}</td>
               </tr>
               <tr>
                 <td style="padding:6px 0;color:#6b7a99;font-size:13px;">Email</td>
-                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;">${inquiry.email ?? "-"}</td>
+                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;">${escapeHtml(inquiry.email)}</td>
               </tr>
               <tr>
                 <td style="padding:6px 0;color:#6b7a99;font-size:13px;">Phone</td>
-                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;">${inquiry.phone}</td>
+                <td style="padding:6px 0;color:#1a1a2e;font-size:14px;">${escapeHtml(inquiry.phone)}</td>
               </tr>
             </table>
           </td>
@@ -102,7 +111,7 @@ function buildEmailHtml(inquiry: {
         <tr>
           <td style="padding:0 40px 24px;">
             <h2 style="margin:0 0 10px;color:#1a3a6b;font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Additional Message</h2>
-            <p style="margin:0;color:#1a1a2e;font-size:14px;line-height:1.7;background:#f5f7fa;padding:14px 16px;border-radius:8px;">${inquiry.message}</p>
+            <p style="margin:0;color:#1a1a2e;font-size:14px;line-height:1.7;background:#f5f7fa;padding:14px 16px;border-radius:8px;">${escapeHtml(inquiry.message)}</p>
           </td>
         </tr>`
             : ""

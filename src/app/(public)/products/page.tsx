@@ -3,7 +3,14 @@ export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/prisma";
 import ProductGrid from "./ProductGrid";
 
-export const metadata = { title: "Products — Bilin Stone" };
+export const metadata = {
+  title: "Products",
+  description:
+    "Browse Bilin Stone air circulation fans, evaporative air coolers, and space heaters for OEM and ODM sourcing.",
+  alternates: {
+    canonical: "/products",
+  },
+};
 
 export default async function ProductsPage({
   searchParams,

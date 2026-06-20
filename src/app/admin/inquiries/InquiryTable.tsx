@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -35,7 +34,6 @@ const statusConfig: Record<string, { label: string; className: string }> = {
 export default function InquiryTable({ inquiries: initial }: { inquiries: Inquiry[] }) {
   const [inquiries, setInquiries] = useState(initial);
   const [expanded, setExpanded] = useState<number | null>(null);
-  const router = useRouter();
 
   const updateStatus = async (id: number, status: string) => {
     const res = await fetch(`/api/inquiries/${id}`, {

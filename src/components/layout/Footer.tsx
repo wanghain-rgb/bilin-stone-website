@@ -11,14 +11,14 @@ export default function Footer() {
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo-dark.png"
-              alt="Bilin Stone"
-              style={{ height: '60px', width: 'auto' }}
+              src="/logo-jianhui-home.svg"
+              alt="Jianhui Home"
+              style={{ height: '48px', width: 'auto' }}
             />
             <p className="text-sm text-gray-500 mt-2">{t.footer.tagline}</p>
           </div>
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Bilin Stone. {t.footer.rights}
+            © {new Date().getFullYear()} Jianhui Home. {t.footer.rights}
           </p>
         </div>
       </div>

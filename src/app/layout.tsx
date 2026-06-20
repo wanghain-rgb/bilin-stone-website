@@ -11,26 +11,26 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://jianhuihome.com"),
   title: {
-    default: "Bilin Stone | Jianhui Home",
-    template: "%s | Bilin Stone",
+    default: "Jianhui Home",
+    template: "%s | Jianhui Home",
   },
   description:
-    "Bilin Stone supplies air circulation fans, evaporative air coolers, and space heaters for global OEM and ODM buyers.",
+    "Jianhui Home supplies air circulation fans, evaporative air coolers, and space heaters for global OEM and ODM buyers.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Bilin Stone | Jianhui Home",
+    title: "Jianhui Home",
     description:
       "Cooling and heating solutions for global OEM and ODM buyers.",
     url: "https://jianhuihome.com",
-    siteName: "Bilin Stone",
+    siteName: "Jianhui Home",
     images: [
       {
         url: "/images/hero-1.png",
         width: 1200,
         height: 630,
-        alt: "Bilin Stone cooling and heating solutions",
+        alt: "Jianhui Home cooling and heating solutions",
       },
     ],
     locale: "en_US",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bilin Stone | Jianhui Home",
+    title: "Jianhui Home",
     description:
       "Cooling and heating solutions for global OEM and ODM buyers.",
     images: ["/images/hero-1.png"],

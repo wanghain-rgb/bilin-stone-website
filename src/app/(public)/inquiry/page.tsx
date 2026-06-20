@@ -6,7 +6,7 @@ import InquiryForm from "./InquiryForm";
 export const metadata = {
   title: "Inquiry",
   description:
-    "Send Bilin Stone a product inquiry for air circulation, cooling, and heating appliance sourcing.",
+    "Send Jianhui Home a product inquiry for air circulation, cooling, and heating appliance sourcing.",
   alternates: {
     canonical: "/inquiry",
   },

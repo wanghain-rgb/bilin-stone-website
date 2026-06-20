@@ -6,7 +6,7 @@ import ProductGrid from "./ProductGrid";
 export const metadata = {
   title: "Products",
   description:
-    "Browse Bilin Stone air circulation fans, evaporative air coolers, and space heaters for OEM and ODM sourcing.",
+    "Browse Jianhui Home air circulation fans, evaporative air coolers, and space heaters for OEM and ODM sourcing.",
   alternates: {
     canonical: "/products",
   },

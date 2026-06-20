@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { Card, CardContent } from "@/components/ui/card";
 import { Package, MessageSquare, Clock, CheckCircle } from "lucide-react";
 
-export const metadata = { title: "管理后台 - Bilin Stone" };
+export const metadata = { title: "管理后台" };
 
 export default async function AdminDashboard() {
   const [productCount, inquiryCount, pendingCount, contactedCount] = await Promise.all([

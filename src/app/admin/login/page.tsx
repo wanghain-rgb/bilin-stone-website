@@ -42,7 +42,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Bilin Stone</CardTitle>
+          <CardTitle className="text-2xl">Jianhui Home</CardTitle>
           <p className="text-sm text-gray-500">管理后台登录</p>
         </CardHeader>
         <CardContent>

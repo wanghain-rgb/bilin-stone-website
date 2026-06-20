@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/prisma";
 import ProductsManager from "./ProductsManager";
 
-export const metadata = { title: "商品管理 - Bilin Stone 管理后台" };
+export const metadata = { title: "商品管理" };
 
 export default async function AdminProductsPage() {
   const products = await prisma.product.findMany({

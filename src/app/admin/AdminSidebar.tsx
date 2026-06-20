@@ -25,7 +25,7 @@ export default function AdminSidebar({ username }: { username: string }) {
   return (
     <aside className="w-56 bg-gray-900 text-white flex flex-col shrink-0">
       <div className="px-4 py-5 border-b border-gray-700">
-        <p className="text-lg font-bold">Bilin Stone</p>
+        <p className="text-lg font-bold">Jianhui Home</p>
         <p className="text-xs text-gray-400 mt-0.5">管理后台</p>
       </div>
 

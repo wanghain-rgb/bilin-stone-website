@@ -51,7 +51,7 @@ function buildEmailHtml(inquiry: {
         <!-- Header -->
         <tr>
           <td style="background:#1a3a6b;padding:28px 40px;">
-            <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:600;">New Inquiry — Bilin Stone</h1>
+            <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:600;">New Inquiry — Jianhui Home</h1>
             <p style="margin:6px 0 0;color:#C9922A;font-size:13px;">
               Submitted at ${new Date(inquiry.createdAt).toLocaleString("en-US", { dateStyle: "long", timeStyle: "short" })}
             </p>
@@ -120,7 +120,7 @@ function buildEmailHtml(inquiry: {
         <!-- Footer -->
         <tr>
           <td style="background:#f5f7fa;padding:20px 40px;border-top:1px solid #e5e7eb;">
-            <p style="margin:0;color:#6b7a99;font-size:12px;">This is an automated notification from the Bilin Stone website.</p>
+            <p style="margin:0;color:#6b7a99;font-size:12px;">This is an automated notification from the Jianhui Home website.</p>
           </td>
         </tr>
 
@@ -149,9 +149,9 @@ async function sendInquiryNotification(inquiry: {
 
   const resend = new Resend(apiKey);
   await resend.emails.send({
-    from: "Bilin Stone <onboarding@resend.dev>",
+    from: "Jianhui Home <onboarding@resend.dev>",
     to: adminEmail,
-    subject: `New Inquiry from Bilin Stone Website — ${inquiry.name}${inquiry.company ? ` (${inquiry.company})` : ""}`,
+    subject: `New Inquiry from Jianhui Home Website — ${inquiry.name}${inquiry.company ? ` (${inquiry.company})` : ""}`,
     html: buildEmailHtml(inquiry),
   });
 }

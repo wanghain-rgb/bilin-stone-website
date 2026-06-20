@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 108" role="img" aria-labelledby="title desc">
+  <title id="title">Jianhui</title>
+  <desc id="desc">Jianhui wordmark</desc>
+  <rect width="420" height="108" fill="none"/>
+  <g transform="translate(12 14)">
+    <path d="M14 44 44 16l30 28" fill="none" stroke="#C9922A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M44 16v62" fill="none" stroke="#1a3a6b" stroke-width="7" stroke-linecap="round"/>
+    <path d="M44 78c-18 0-30-10-30-27" fill="none" stroke="#1a3a6b" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="72" cy="78" r="5" fill="#C9922A"/>
+  </g>
+  <text x="112" y="70" fill="#1a3a6b" font-family="Montserrat, Avenir Next, Segoe UI, sans-serif" font-size="52" font-weight="700" letter-spacing="1.5">
+    Jianhui
+  </text>
+  <path d="M114 82h212" stroke="#C9922A" stroke-width="4" stroke-linecap="round"/>
+</svg>

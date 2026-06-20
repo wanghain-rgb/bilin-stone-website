@@ -73,9 +73,9 @@ export default function Navbar() {
         <Link href="/" className="flex items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-dark.png"
-            alt="Bilin Stone"
-            style={{ height: "160px", width: "auto" }}
+            src="/logo-jianhui-home.svg"
+            alt="Jianhui Home"
+            style={{ height: "52px", width: "auto" }}
           />
         </Link>
 

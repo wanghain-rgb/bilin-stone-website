@@ -1,8 +1,8 @@
-# Bilin Stone / Jianhui Home Website
+# Jianhui Home Website
 
 Production domain: [jianhuihome.com](https://jianhuihome.com)
 
-This is a Next.js App Router website for Bilin Stone / Jianhui Home, with public product pages, inquiry forms, admin product management, and Prisma-backed product/inquiry data.
+This is a Next.js App Router website for Jianhui Home, with public product pages, inquiry forms, admin product management, and Prisma-backed product/inquiry data.
 
 ## Local Development
 

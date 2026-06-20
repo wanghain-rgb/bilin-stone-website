@@ -27,7 +27,7 @@ const content = {
     heroSub: "From factory to end market — delivering innovation, quality, and sustainability worldwide.",
     intro: {
       title: "Company Introduction",
-      body: "Bilin Stone is a global supply chain and manufacturing partner specializing in cooling and heating solutions. Since 2016, we have been committed to delivering high-performance products through the integration of R&D, manufacturing, and global logistics. With a production base in China, and sales and service centers in Australia and the United States, we provide localized support backed by strong global capabilities. We go beyond manufacturing — delivering end-to-end solutions that empower brands to grow efficiently and sustainably worldwide.",
+      body: "Jianhui Home is a global supply chain and manufacturing partner specializing in cooling and heating solutions. Since 2016, we have been committed to delivering high-performance products through the integration of R&D, manufacturing, and global logistics. With a production base in China, and sales and service centers in Australia and the United States, we provide localized support backed by strong global capabilities. We go beyond manufacturing — delivering end-to-end solutions that empower brands to grow efficiently and sustainably worldwide.",
     },
     whatWeDo: {
       title: "What We Do",
@@ -54,7 +54,7 @@ const content = {
     },
     csr: {
       title: "Social Responsibility",
-      lead: "We believe that sustainable business creates a better future. Bilin Stone is committed to making a positive impact on the environment, society, and our people.",
+      lead: "We believe that sustainable business creates a better future. Jianhui Home is committed to making a positive impact on the environment, society, and our people.",
       pillars: [
         {
           icon: Leaf,
@@ -92,7 +92,7 @@ const content = {
     heroSub: "从工厂到终端市场 — 在全球范围内交付创新、品质与可持续发展。",
     intro: {
       title: "公司介绍",
-      body: "Bilin Stone 是专注于制冷与取暖解决方案的全球供应链与制造合作伙伴。自2016年起，我们通过整合研发、制造与全球物流，致力于提供高性能产品。我们在中国设有生产基地，在澳大利亚和美国设有销售与服务中心，以强大的全球能力为客户提供本地化支持。我们不止于制造——我们提供端到端的整体解决方案，助力品牌在全球高效、可持续地成长。",
+      body: "Jianhui Home 是专注于制冷与取暖解决方案的全球供应链与制造合作伙伴。自2016年起，我们通过整合研发、制造与全球物流，致力于提供高性能产品。我们在中国设有生产基地，在澳大利亚和美国设有销售与服务中心，以强大的全球能力为客户提供本地化支持。我们不止于制造——我们提供端到端的整体解决方案，助力品牌在全球高效、可持续地成长。",
     },
     whatWeDo: {
       title: "我们的业务",
@@ -119,7 +119,7 @@ const content = {
     },
     csr: {
       title: "社会责任",
-      lead: "我们相信，可持续的企业经营能创造更美好的未来。Bilin Stone 致力于对环境、社会和员工产生积极影响。",
+      lead: "我们相信，可持续的企业经营能创造更美好的未来。Jianhui Home 致力于对环境、社会和员工产生积极影响。",
       pillars: [
         {
           icon: Leaf,

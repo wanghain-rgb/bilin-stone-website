@@ -481,7 +481,7 @@ export default function HomeContent({
                 marginBottom: "12px",
               }}
             >
-              Why Choose Bilin Stone
+              Why Choose Jianhui Home
             </h2>
             <p style={{ fontSize: "15px", color: "#6b7a99", maxWidth: "480px", margin: "0 auto" }}>
               Trusted by buyers across 30+ countries for reliable climate solutions

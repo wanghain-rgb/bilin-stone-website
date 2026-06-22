@@ -83,7 +83,7 @@ const content = {
       title: "Ready to partner with us?",
       sub: "Contact our team and let's build something great together.",
       btn: "Get in Touch",
-      email: "infw@jianhuihome.com",
+      email: "tony.luo@jianhuihome.com",
     },
   },
   zh: {
@@ -148,7 +148,7 @@ const content = {
       title: "准备好与我们合作了吗？",
       sub: "联系我们的团队，共同创造卓越。",
       btn: "立即联系",
-      email: "infw@jianhuihome.com",
+      email: "tony.luo@jianhuihome.com",
     },
   },
 };
@@ -180,8 +180,8 @@ export default function AboutContent() {
             <p className="text-gray-600 leading-8 text-base max-w-3xl">{c.intro.body}</p>
             <div className="mt-6 flex items-center gap-2 text-sm text-gray-500">
               <Mail className="h-4 w-4 shrink-0 text-amber-500" />
-              <a href="mailto:infw@jianhuihome.com" className="hover:text-amber-600 transition-colors">
-                infw@jianhuihome.com
+              <a href="mailto:tony.luo@jianhuihome.com" className="hover:text-amber-600 transition-colors">
+                tony.luo@jianhuihome.com
               </a>
             </div>
           </div>

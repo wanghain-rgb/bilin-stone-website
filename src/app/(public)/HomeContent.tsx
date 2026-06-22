@@ -676,7 +676,6 @@ export default function HomeContent({
             style={{ gap: "48px", marginBottom: "48px" }}
           >
             {[
-              { name: "Leonara Shen", email: "tony.luo@jianhuihome.com" },
               { name: "Tony Luo",     email: "tony.luo@jianhuihome.com" },
             ].map(({ name, email }) => (
               <div key={name}>
